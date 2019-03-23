@@ -280,12 +280,20 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 tvOperation.setText("+");
                 tvOperation.setVisibility(View.VISIBLE);
             } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                tvFirstDigit.setText(Answer);
+                Ans = tvAnswer.getText().toString().trim();
+                Ans = Ans.replace("Answer : ","");
+                tvFirstDigit.setText("");
+                tvOperation.setText("");
+                tvSecondDigit.setText("");
+                tvAnswer.setText("");
                 tvOperation.setVisibility(View.GONE);
                 tvSecondDigit.setVisibility(View.GONE);
                 tvAnswer.setVisibility(View.GONE);
                 vHorizontalLine.setVisibility(View.GONE);
+                tvFirstDigit.setText(Ans);
+                tvFirstDigit.setVisibility(View.VISIBLE);
                 tvOperation.setText("+");
+                tvOperation.setVisibility(View.VISIBLE);
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
@@ -294,12 +302,20 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 tvOperation.setText("-");
                 tvOperation.setVisibility(View.VISIBLE);
             } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                tvFirstDigit.setText(Answer);
+                Ans = tvAnswer.getText().toString().trim();
+                Ans = Ans.replace("Answer : ","");
+                tvFirstDigit.setText("");
+                tvOperation.setText("");
+                tvSecondDigit.setText("");
+                tvAnswer.setText("");
                 tvOperation.setVisibility(View.GONE);
                 tvSecondDigit.setVisibility(View.GONE);
                 tvAnswer.setVisibility(View.GONE);
                 vHorizontalLine.setVisibility(View.GONE);
+                tvFirstDigit.setText(Ans);
+                tvFirstDigit.setVisibility(View.VISIBLE);
                 tvOperation.setText("-");
+                tvOperation.setVisibility(View.VISIBLE);
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
@@ -308,12 +324,20 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 tvOperation.setText("*");
                 tvOperation.setVisibility(View.VISIBLE);
             } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                tvFirstDigit.setText(Answer);
+                Ans = tvAnswer.getText().toString().trim();
+                Ans = Ans.replace("Answer : ","");
+                tvFirstDigit.setText("");
+                tvOperation.setText("");
+                tvSecondDigit.setText("");
+                tvAnswer.setText("");
                 tvOperation.setVisibility(View.GONE);
                 tvSecondDigit.setVisibility(View.GONE);
                 tvAnswer.setVisibility(View.GONE);
                 vHorizontalLine.setVisibility(View.GONE);
+                tvFirstDigit.setText(Ans);
+                tvFirstDigit.setVisibility(View.VISIBLE);
                 tvOperation.setText("*");
+                tvOperation.setVisibility(View.VISIBLE);
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
@@ -322,12 +346,20 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 tvOperation.setText("/");
                 tvOperation.setVisibility(View.VISIBLE);
             } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                tvFirstDigit.setText(Answer);
+                Ans = tvAnswer.getText().toString().trim();
+                Ans = Ans.replace("Answer : ","");
+                tvFirstDigit.setText("");
+                tvOperation.setText("");
+                tvSecondDigit.setText("");
+                tvAnswer.setText("");
                 tvOperation.setVisibility(View.GONE);
                 tvSecondDigit.setVisibility(View.GONE);
                 tvAnswer.setVisibility(View.GONE);
                 vHorizontalLine.setVisibility(View.GONE);
+                tvFirstDigit.setText(Ans);
+                tvFirstDigit.setVisibility(View.VISIBLE);
                 tvOperation.setText("/");
+                tvOperation.setVisibility(View.VISIBLE);
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
@@ -337,21 +369,27 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 tvOperation.setVisibility(View.VISIBLE);
                 FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
                 Answer = FirstDigit / 100;
-                Ans = "Answer : " + Answer;
-                tvAnswer.setText(Ans);
+                tvAnswer.setText("Answer : "+Answer);
                 vHorizontalLine.setVisibility(View.VISIBLE);
                 tvAnswer.setVisibility(View.VISIBLE);
             } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                tvFirstDigit.setText(Answer);
+                Ans = tvAnswer.getText().toString().trim();
+                Ans = Ans.replace("Answer : ","");
+                tvFirstDigit.setText("");
+                tvOperation.setText("");
+                tvSecondDigit.setText("");
+                tvAnswer.setText("");
                 tvOperation.setVisibility(View.GONE);
                 tvSecondDigit.setVisibility(View.GONE);
                 tvAnswer.setVisibility(View.GONE);
                 vHorizontalLine.setVisibility(View.GONE);
+                tvFirstDigit.setText(Ans);
+                tvFirstDigit.setVisibility(View.VISIBLE);
                 tvOperation.setText("%");
+                tvOperation.setVisibility(View.VISIBLE);
                 FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
                 Answer = FirstDigit / 100;
-                Ans = "Answer : " + Answer;
-                tvAnswer.setText(Ans);
+                tvAnswer.setText("Answer : "+Answer);
                 vHorizontalLine.setVisibility(View.VISIBLE);
                 tvAnswer.setVisibility(View.VISIBLE);
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
@@ -365,26 +403,22 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 Operation = tvOperation.getText().toString().trim();
                 if (Operation.equals("+")) {
                     Answer = FirstDigit + SecondDigit;
-                    Ans = "Answer : " + Answer;
-                    tvAnswer.setText(Ans);
+                    tvAnswer.setText("Answer : "+Answer);
                     tvAnswer.setVisibility(View.VISIBLE);
                 }
                 if (Operation.equals("-")) {
                     Answer = FirstDigit - SecondDigit;
-                    Ans = "Answer : " + Answer;
-                    tvAnswer.setText(Ans);
+                    tvAnswer.setText("Answer : "+Answer);
                     tvAnswer.setVisibility(View.VISIBLE);
                 }
                 if (Operation.equals("*")) {
                     Answer = FirstDigit * SecondDigit;
-                    Ans = "Answer : " + Answer;
-                    tvAnswer.setText(Ans);
+                    tvAnswer.setText("Answer : "+Answer);
                     tvAnswer.setVisibility(View.VISIBLE);
                 }
                 if (Operation.equals("/")) {
                     Answer = FirstDigit / SecondDigit;
-                    Ans = "Answer : " + Answer;
-                    tvAnswer.setText(Ans);
+                    tvAnswer.setText("Answer : "+Answer);
                     tvAnswer.setVisibility(View.VISIBLE);
                 }
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();

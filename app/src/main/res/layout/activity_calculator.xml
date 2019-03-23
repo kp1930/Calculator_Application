@@ -13,7 +13,7 @@
         android:id="@+id/lLayoutText"
         android:layout_width="match_parent"
         android:layout_height="275dp"
-        android:background="@color/colorMain"
+        android:background="@drawable/button_shape"
         android:gravity="end"
         android:orientation="vertical">
 
