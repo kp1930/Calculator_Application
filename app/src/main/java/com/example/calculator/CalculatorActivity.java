@@ -98,11 +98,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         if (v == btn9) digitButton("9");
 
         if (v == btnPoint) {
-            if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                appendDigit(tvFirstDigit, ".");
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                appendDigit(tvSecondDigit, ".");
-            } else if (tvAnswer.getVisibility() == View.VISIBLE) {
+            if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) appendDigit(tvFirstDigit, ".");
+            else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) appendDigit(tvSecondDigit, ".");
+            else if (tvAnswer.getVisibility() == View.VISIBLE) {
                 Ans = Answer + ".";
                 tvFirstDigit.setText(Ans);
                 tvOperation.setVisibility(View.GONE);
@@ -162,13 +160,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         }
 
         if (v == btnDel) {
-            if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                changeDigit(tvFirstDigit);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE)) {
-                changeDigit(tvSecondDigit);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                removeTextView(tvOperation);
-            } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
+            if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) changeDigit(tvFirstDigit);
+            else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE)) changeDigit(tvSecondDigit);
+            else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) removeTextView(tvOperation);
+            else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
         if (v == btnMore) Toast.makeText(CalculatorActivity.this, "This button is under construction", Toast.LENGTH_LONG).show();
@@ -200,23 +195,17 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     public void digitButton(String s) {
-        if (tvFirstDigit.getVisibility() == View.GONE) {
-            addTextView(tvFirstDigit, s);
-        } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-            addTextView(tvSecondDigit, s);
-        } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-            appendDigit(tvFirstDigit, s);
-        } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-            appendDigit(tvSecondDigit, s);
-        } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
+        if (tvFirstDigit.getVisibility() == View.GONE) addTextView(tvFirstDigit, s);
+        else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) addTextView(tvSecondDigit, s);
+        else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) appendDigit(tvFirstDigit, s);
+        else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) appendDigit(tvSecondDigit, s);
+        else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
     }
 
     public void operationButton(String s) {
-        if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-            addTextView(tvOperation, s);
-        } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-            operationEquals(s);
-        } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE)) {
+        if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) addTextView(tvOperation, s);
+        else if (tvAnswer.getVisibility() == View.VISIBLE) operationEquals(s);
+        else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE)) {
             FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
             SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
             Operation = tvOperation.getText().toString().trim();
