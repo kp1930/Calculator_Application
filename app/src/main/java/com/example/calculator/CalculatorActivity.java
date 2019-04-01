@@ -11,7 +11,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPoint, btnSum, btnSubtraction, btnMultiply, btnDivide, btnPercentage, btnEquals, btnAC, btnDel, btnMore;
     TextView tvFirstDigit, tvSecondDigit, tvOperation, tvAnswer;
-    Integer FirstDigit, SecondDigit, Answer;
+    Integer FirstDigit, SecondDigit, Answer, Digit;
     String Operation, Ans;
     View vHorizontalLine;
 
@@ -76,195 +76,32 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        if (v == btn0) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("0");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("0");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "0";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "0";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
 
-        if (v == btn1) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("1");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("1");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "1";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "1";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
+        if (v == btn0) digitButton("0");
 
-        if (v == btn2) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("2");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("2");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "2";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "2";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
+        if (v == btn1) digitButton("1");
 
-        if (v == btn3) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("3");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("3");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "3";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "3";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
+        if (v == btn2) digitButton("2");
 
-        if (v == btn4) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("4");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("4");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "4";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "4";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
+        if (v == btn3) digitButton("3");
 
-        if (v == btn5) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("5");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("5");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "5";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "5";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
+        if (v == btn4) digitButton("4");
 
-        if (v == btn6) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("6");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("6");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "6";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "6";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
+        if (v == btn5) digitButton("5");
 
-        if (v == btn7) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("7");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("7");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "7";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "7";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
+        if (v == btn6) digitButton("6");
 
-        if (v == btn8) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("8");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("8");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "8";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "8";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
+        if (v == btn7) digitButton("7");
 
-        if (v == btn9) {
-            if (tvFirstDigit.getVisibility() == View.GONE) {
-                tvFirstDigit.setText("9");
-                tvFirstDigit.setVisibility(View.VISIBLE);
-            } else if ((tvOperation.getVisibility() == View.VISIBLE) && (tvFirstDigit.getVisibility() == View.VISIBLE) && (tvAnswer.getVisibility() == View.GONE)) {
-                tvSecondDigit.setText("9");
-                tvSecondDigit.setVisibility(View.VISIBLE);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + "9";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + "9";
-                tvSecondDigit.setText(Ans);
-            } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
-        }
+        if (v == btn8) digitButton("8");
+
+        if (v == btn9) digitButton("9");
 
         if (v == btnPoint) {
             if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Ans = FirstDigit + ".";
-                tvFirstDigit.setText(Ans);
-            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (vHorizontalLine.getVisibility() == View.GONE)) {
-                SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
-                Ans = SecondDigit + ".";
-                tvSecondDigit.setText(Ans);
+                appendDigit(tvFirstDigit, ".");
+            } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
+                appendDigit(tvSecondDigit, ".");
             } else if (tvAnswer.getVisibility() == View.VISIBLE) {
                 Ans = Answer + ".";
                 tvFirstDigit.setText(Ans);
@@ -275,123 +112,22 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
-        if (v == btnSum) {
-            if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                tvOperation.setText("+");
-                tvOperation.setVisibility(View.VISIBLE);
-            } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                Ans = tvAnswer.getText().toString().trim();
-                Ans = Ans.replace("Answer : ","");
-                tvFirstDigit.setText("");
-                tvOperation.setText("");
-                tvSecondDigit.setText("");
-                tvAnswer.setText("");
-                tvOperation.setVisibility(View.GONE);
-                tvSecondDigit.setVisibility(View.GONE);
-                tvAnswer.setVisibility(View.GONE);
-                vHorizontalLine.setVisibility(View.GONE);
-                tvFirstDigit.setText(Ans);
-                tvFirstDigit.setVisibility(View.VISIBLE);
-                tvOperation.setText("+");
-                tvOperation.setVisibility(View.VISIBLE);
-            } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
-        }
+        if (v == btnSum) operationButton("+");
 
-        if (v == btnSubtraction) {
-            if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                tvOperation.setText("-");
-                tvOperation.setVisibility(View.VISIBLE);
-            } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                Ans = tvAnswer.getText().toString().trim();
-                Ans = Ans.replace("Answer : ","");
-                tvFirstDigit.setText("");
-                tvOperation.setText("");
-                tvSecondDigit.setText("");
-                tvAnswer.setText("");
-                tvOperation.setVisibility(View.GONE);
-                tvSecondDigit.setVisibility(View.GONE);
-                tvAnswer.setVisibility(View.GONE);
-                vHorizontalLine.setVisibility(View.GONE);
-                tvFirstDigit.setText(Ans);
-                tvFirstDigit.setVisibility(View.VISIBLE);
-                tvOperation.setText("-");
-                tvOperation.setVisibility(View.VISIBLE);
-            } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
-        }
+        if (v == btnSubtraction) operationButton("-");
 
-        if (v == btnMultiply) {
-            if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                tvOperation.setText("*");
-                tvOperation.setVisibility(View.VISIBLE);
-            } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                Ans = tvAnswer.getText().toString().trim();
-                Ans = Ans.replace("Answer : ","");
-                tvFirstDigit.setText("");
-                tvOperation.setText("");
-                tvSecondDigit.setText("");
-                tvAnswer.setText("");
-                tvOperation.setVisibility(View.GONE);
-                tvSecondDigit.setVisibility(View.GONE);
-                tvAnswer.setVisibility(View.GONE);
-                vHorizontalLine.setVisibility(View.GONE);
-                tvFirstDigit.setText(Ans);
-                tvFirstDigit.setVisibility(View.VISIBLE);
-                tvOperation.setText("*");
-                tvOperation.setVisibility(View.VISIBLE);
-            } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
-        }
+        if (v == btnMultiply) operationButton("*");
 
-        if (v == btnDivide) {
-            if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                tvOperation.setText("/");
-                tvOperation.setVisibility(View.VISIBLE);
-            } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                Ans = tvAnswer.getText().toString().trim();
-                Ans = Ans.replace("Answer : ","");
-                tvFirstDigit.setText("");
-                tvOperation.setText("");
-                tvSecondDigit.setText("");
-                tvAnswer.setText("");
-                tvOperation.setVisibility(View.GONE);
-                tvSecondDigit.setVisibility(View.GONE);
-                tvAnswer.setVisibility(View.GONE);
-                vHorizontalLine.setVisibility(View.GONE);
-                tvFirstDigit.setText(Ans);
-                tvFirstDigit.setVisibility(View.VISIBLE);
-                tvOperation.setText("/");
-                tvOperation.setVisibility(View.VISIBLE);
-            } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
-        }
+        if (v == btnDivide) operationButton("/");
 
         if (v == btnPercentage) {
             if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                tvOperation.setText("%");
-                tvOperation.setVisibility(View.VISIBLE);
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Answer = FirstDigit / 100;
-                tvAnswer.setText("Answer : "+Answer);
-                vHorizontalLine.setVisibility(View.VISIBLE);
+                addAll(tvOperation, "%");
+                operationPercentage();
                 tvAnswer.setVisibility(View.VISIBLE);
             } else if (tvAnswer.getVisibility() == View.VISIBLE) {
-                Ans = tvAnswer.getText().toString().trim();
-                Ans = Ans.replace("Answer : ","");
-                tvFirstDigit.setText("");
-                tvOperation.setText("");
-                tvSecondDigit.setText("");
-                tvAnswer.setText("");
-                tvOperation.setVisibility(View.GONE);
-                tvSecondDigit.setVisibility(View.GONE);
-                tvAnswer.setVisibility(View.GONE);
-                vHorizontalLine.setVisibility(View.GONE);
-                tvFirstDigit.setText(Ans);
-                tvFirstDigit.setVisibility(View.VISIBLE);
-                tvOperation.setText("%");
-                tvOperation.setVisibility(View.VISIBLE);
-                FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
-                Answer = FirstDigit / 100;
-                tvAnswer.setText("Answer : "+Answer);
-                vHorizontalLine.setVisibility(View.VISIBLE);
-                tvAnswer.setVisibility(View.VISIBLE);
+                operationEquals("%");
+                operationPercentage();
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
@@ -403,58 +139,115 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 Operation = tvOperation.getText().toString().trim();
                 if (Operation.equals("+")) {
                     Answer = FirstDigit + SecondDigit;
-                    tvAnswer.setText("Answer : "+Answer);
-                    tvAnswer.setVisibility(View.VISIBLE);
+                    showAnswer();
                 }
                 if (Operation.equals("-")) {
                     Answer = FirstDigit - SecondDigit;
-                    tvAnswer.setText("Answer : "+Answer);
-                    tvAnswer.setVisibility(View.VISIBLE);
+                    showAnswer();
                 }
                 if (Operation.equals("*")) {
                     Answer = FirstDigit * SecondDigit;
-                    tvAnswer.setText("Answer : "+Answer);
-                    tvAnswer.setVisibility(View.VISIBLE);
+                    showAnswer();
                 }
                 if (Operation.equals("/")) {
                     Answer = FirstDigit / SecondDigit;
-                    tvAnswer.setText("Answer : "+Answer);
-                    tvAnswer.setVisibility(View.VISIBLE);
+                    showAnswer();
                 }
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
         if (v == btnAC) {
             if ((tvFirstDigit.getVisibility() == View.VISIBLE) || (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE)) {
-                tvFirstDigit.setText("");
-                tvFirstDigit.setVisibility(View.GONE);
-                tvOperation.setText("");
-                tvOperation.setVisibility(View.GONE);
-                tvSecondDigit.setText("");
-                tvSecondDigit.setVisibility(View.GONE);
-                tvAnswer.setText("");
-                tvAnswer.setVisibility(View.GONE);
+                removeALL(tvFirstDigit);
+                removeALL(tvSecondDigit);
+                removeALL(tvOperation);
+                removeALL(tvAnswer);
                 vHorizontalLine.setVisibility(View.GONE);
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
         if (v == btnDel) {
             if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                String str = tvFirstDigit.getText().toString().trim();
-                str = str.substring(0, (str.length()-1));
-                tvFirstDigit.setText(str);
-                tvFirstDigit.setVisibility(View.GONE);
+                changeDigit(tvFirstDigit);
             } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE)) {
-                String str = tvSecondDigit.getText().toString().trim();
-                str = str.substring(0, (str.length() - 1));
-                tvSecondDigit.setText(str);
-                tvSecondDigit.setVisibility(View.GONE);
+                changeDigit(tvSecondDigit);
             } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                tvOperation.setText("");
-                tvOperation.setVisibility(View.GONE);
+                removeALL(tvOperation);
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
         if (v == btnMore) Toast.makeText(CalculatorActivity.this, "This button is under construction", Toast.LENGTH_LONG).show();
+    }
+
+    public void changeDigit(TextView textView) {
+        String str = textView.getText().toString().trim();
+        str = str.substring(0, (str.length() - 1));
+        textView.setText("");
+        textView.setVisibility(View.GONE);
+        textView.setText(str);
+        textView.setVisibility(View.VISIBLE);
+    }
+
+    public void removeALL(TextView textView) {
+        textView.setText("");
+        textView.setVisibility(View.GONE);
+    }
+
+    public void addAll(TextView textView, String s) {
+        textView.setText(s);
+        textView.setVisibility(View.VISIBLE);
+    }
+
+    public void appendDigit(TextView textView, String s) {
+        Digit = Integer.parseInt(textView.getText().toString().trim());
+        Ans = Digit + s;
+        textView.setText(Ans);
+    }
+
+    public void digitButton(String s) {
+        if (tvFirstDigit.getVisibility() == View.GONE) {
+            addAll(tvFirstDigit, s);
+        } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
+            addAll(tvSecondDigit, s);
+        } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
+            appendDigit(tvFirstDigit, s);
+        } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
+            appendDigit(tvSecondDigit, s);
+        } else Toast.makeText(CalculatorActivity.this, "Something wrong", Toast.LENGTH_LONG).show();
+    }
+
+    public void operationButton(String s) {
+        if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
+            addAll(tvOperation, s);
+        } else if (tvAnswer.getVisibility() == View.VISIBLE) {
+            operationEquals(s);
+        } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE)) {
+
+        } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
+    }
+
+    public void operationEquals(String s) {
+        Ans = tvAnswer.getText().toString().trim();
+        Ans = Ans.replace("Answer : ","");
+        removeALL(tvFirstDigit);
+        removeALL(tvOperation);
+        removeALL(tvSecondDigit);
+        removeALL(tvAnswer);
+        vHorizontalLine.setVisibility(View.GONE);
+        addAll(tvFirstDigit, Ans);
+        addAll(tvOperation, s);
+    }
+
+    public void operationPercentage() {
+        FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
+        Answer = FirstDigit / 100;
+        tvAnswer.setText("Answer : " + Answer);
+        vHorizontalLine.setVisibility(View.VISIBLE);
+        tvAnswer.setVisibility(View.VISIBLE);
+    }
+
+    public void showAnswer() {
+        tvAnswer.setText("Answer : " + Answer);
+        tvAnswer.setVisibility(View.VISIBLE);
     }
 }
