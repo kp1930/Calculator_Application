@@ -110,7 +110,7 @@
                 android:textSize="22sp" />
 
             <Button
-                android:id="@+id/buttonPercentage"
+                android:id="@+id/buttonPerc"
                 android:layout_width="75dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="22dp"
@@ -121,7 +121,7 @@
                 android:textSize="22sp" />
 
             <Button
-                android:id="@+id/buttonDivide"
+                android:id="@+id/buttonDiv"
                 android:layout_width="75dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="22dp"
@@ -174,7 +174,7 @@
                 android:textSize="22sp" />
 
             <Button
-                android:id="@+id/buttonMultiply"
+                android:id="@+id/buttonMul"
                 android:layout_width="75dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="22dp"
@@ -227,7 +227,7 @@
                 android:textSize="22sp" />
 
             <Button
-                android:id="@+id/buttonSubtraction"
+                android:id="@+id/buttonSub"
                 android:layout_width="75dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="22dp"

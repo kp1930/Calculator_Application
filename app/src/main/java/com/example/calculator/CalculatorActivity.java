@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPoint, btnSum, btnSubtraction, btnMultiply, btnDivide, btnPercentage, btnEquals, btnAC, btnDel, btnMore;
+    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPoint, btnSum, btnSub, btnMul, btnDiv, btnPerc, btnEquals, btnAC, btnDel, btnMore;
     TextView tvFirstDigit, tvSecondDigit, tvOperation, tvAnswer;
     Integer FirstDigit, SecondDigit, Answer, Digit;
     String Operation, Ans;
@@ -36,10 +36,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         btn9 = findViewById(R.id.button9);
         btnPoint = findViewById(R.id.buttonPoint);
         btnSum = findViewById(R.id.buttonSum);
-        btnSubtraction = findViewById(R.id.buttonSubtraction);
-        btnMultiply = findViewById(R.id.buttonMultiply);
-        btnDivide = findViewById(R.id.buttonDivide);
-        btnPercentage = findViewById(R.id.buttonPercentage);
+        btnSub = findViewById(R.id.buttonSub);
+        btnMul = findViewById(R.id.buttonMul);
+        btnDiv = findViewById(R.id.buttonDiv);
+        btnPerc = findViewById(R.id.buttonPerc);
         btnEquals = findViewById(R.id.buttonEquals);
         btnAC = findViewById(R.id.buttonAC);
         btnDel = findViewById(R.id.buttonDelete);
@@ -64,10 +64,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         btn9.setOnClickListener(this);
         btnPoint.setOnClickListener(this);
         btnSum.setOnClickListener(this);
-        btnSubtraction.setOnClickListener(this);
-        btnMultiply.setOnClickListener(this);
-        btnDivide.setOnClickListener(this);
-        btnPercentage.setOnClickListener(this);
+        btnSub.setOnClickListener(this);
+        btnMul.setOnClickListener(this);
+        btnDiv.setOnClickListener(this);
+        btnPerc.setOnClickListener(this);
         btnEquals.setOnClickListener(this);
         btnAC.setOnClickListener(this);
         btnDel.setOnClickListener(this);
@@ -78,23 +78,14 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
 
         if (v == btn0) digitButton("0");
-
         if (v == btn1) digitButton("1");
-
         if (v == btn2) digitButton("2");
-
         if (v == btn3) digitButton("3");
-
         if (v == btn4) digitButton("4");
-
         if (v == btn5) digitButton("5");
-
         if (v == btn6) digitButton("6");
-
         if (v == btn7) digitButton("7");
-
         if (v == btn8) digitButton("8");
-
         if (v == btn9) digitButton("9");
 
         if (v == btnPoint) {
@@ -111,14 +102,11 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         }
 
         if (v == btnSum) operationButton("+");
+        if (v == btnSub) operationButton("-");
+        if (v == btnMul) operationButton("*");
+        if (v == btnDiv) operationButton("/");
 
-        if (v == btnSubtraction) operationButton("-");
-
-        if (v == btnMultiply) operationButton("*");
-
-        if (v == btnDivide) operationButton("/");
-
-        if (v == btnPercentage) {
+        if (v == btnPerc) {
             if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
                 addTextView(tvOperation, "%");
                 operationPercentage();
