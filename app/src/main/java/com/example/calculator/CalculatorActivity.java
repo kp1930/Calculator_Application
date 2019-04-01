@@ -122,7 +122,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         if (v == btnPercentage) {
             if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                addAll(tvOperation, "%");
+                addTextView(tvOperation, "%");
                 operationPercentage();
                 tvAnswer.setVisibility(View.VISIBLE);
             } else if (tvAnswer.getVisibility() == View.VISIBLE) {
@@ -157,13 +157,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         }
 
         if (v == btnAC) {
-            if ((tvFirstDigit.getVisibility() == View.VISIBLE) || (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE)) {
-                removeALL(tvFirstDigit);
-                removeALL(tvSecondDigit);
-                removeALL(tvOperation);
-                removeALL(tvAnswer);
-                vHorizontalLine.setVisibility(View.GONE);
-            } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
+            if ((tvFirstDigit.getVisibility() == View.VISIBLE) || (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE)) allGone();
+            else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
         if (v == btnDel) {
@@ -172,7 +167,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE)) {
                 changeDigit(tvSecondDigit);
             } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-                removeALL(tvOperation);
+                removeTextView(tvOperation);
             } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
         }
 
@@ -184,16 +179,16 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         str = str.substring(0, (str.length() - 1));
         textView.setText("");
         textView.setVisibility(View.GONE);
-        textView.setText(str);
-        textView.setVisibility(View.VISIBLE);
+        if (str.length() != 0) addTextView(textView, str);
+        else removeTextView(textView);
     }
 
-    public void removeALL(TextView textView) {
+    public void removeTextView(TextView textView) {
         textView.setText("");
         textView.setVisibility(View.GONE);
     }
 
-    public void addAll(TextView textView, String s) {
+    public void addTextView(TextView textView, String s) {
         textView.setText(s);
         textView.setVisibility(View.VISIBLE);
     }
@@ -206,9 +201,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     public void digitButton(String s) {
         if (tvFirstDigit.getVisibility() == View.GONE) {
-            addAll(tvFirstDigit, s);
+            addTextView(tvFirstDigit, s);
         } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
-            addAll(tvSecondDigit, s);
+            addTextView(tvSecondDigit, s);
         } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.GONE) && (tvSecondDigit.getVisibility() == View.GONE)) {
             appendDigit(tvFirstDigit, s);
         } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (vHorizontalLine.getVisibility() == View.GONE) && (tvAnswer.getVisibility() == View.GONE)) {
@@ -218,24 +213,37 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     public void operationButton(String s) {
         if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.GONE)) {
-            addAll(tvOperation, s);
+            addTextView(tvOperation, s);
         } else if (tvAnswer.getVisibility() == View.VISIBLE) {
             operationEquals(s);
         } else if ((tvFirstDigit.getVisibility() == View.VISIBLE) && (tvSecondDigit.getVisibility() == View.VISIBLE) && (tvOperation.getVisibility() == View.VISIBLE)) {
-
+            FirstDigit = Integer.parseInt(tvFirstDigit.getText().toString().trim());
+            SecondDigit = Integer.parseInt(tvSecondDigit.getText().toString().trim());
+            Operation = tvOperation.getText().toString().trim();
+            allGone();
+            if (Operation.equals("+")) Answer = FirstDigit + SecondDigit;
+            if (Operation.equals("-")) Answer = FirstDigit - SecondDigit;
+            if (Operation.equals("*")) Answer = FirstDigit * SecondDigit;
+            if (Operation.equals("/")) Answer = FirstDigit / SecondDigit;
+            addTextView(tvFirstDigit, Answer.toString());
+            addTextView(tvOperation, s);
         } else Toast.makeText(CalculatorActivity.this, "Please enter value first", Toast.LENGTH_LONG).show();
     }
 
     public void operationEquals(String s) {
         Ans = tvAnswer.getText().toString().trim();
         Ans = Ans.replace("Answer : ","");
-        removeALL(tvFirstDigit);
-        removeALL(tvOperation);
-        removeALL(tvSecondDigit);
-        removeALL(tvAnswer);
+        allGone();
+        addTextView(tvFirstDigit, Ans);
+        addTextView(tvOperation, s);
+    }
+
+    public void allGone() {
+        removeTextView(tvFirstDigit);
+        removeTextView(tvOperation);
+        removeTextView(tvSecondDigit);
+        removeTextView(tvAnswer);
         vHorizontalLine.setVisibility(View.GONE);
-        addAll(tvFirstDigit, Ans);
-        addAll(tvOperation, s);
     }
 
     public void operationPercentage() {
